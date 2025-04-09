@@ -17,6 +17,5 @@ export default function WeatherCard({ data }) {
     <p>Wind: {data.wind.speed} km/h</p>
   </div>
 </div>
-
   );
 }

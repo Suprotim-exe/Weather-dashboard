@@ -22,15 +22,11 @@ function App() {
   const handleSearch = async (city) => {
     setLoading(true);
     setError("");
-  
     try {
       const weather = await fetchWeather(city);
       const forecastData = await fetchForecast(city);
-  
       setWeatherData(weather);
       setForecast(forecastData.list);
-  
-      // ✅ Update recent search history (limit to 5, no duplicates)
       setSearchHistory((prev) => {
         const updated = [city, ...prev.filter(c => c.toLowerCase() !== city.toLowerCase())].slice(0, 5);
         localStorage.setItem("weather_search_history", JSON.stringify(updated));
@@ -49,7 +45,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-white transition-colors duration-300 p-4">
       <div className="max-w-2xl mx-auto">
-        {/* Toggle Button */}
+        {}
         <button
           onClick={() => setIsDark(!isDark)}
           className="mb-6 px-4 py-2 rounded-lg bg-gray-800 text-white dark:bg-yellow-400 dark:text-black shadow-md"
@@ -57,7 +53,7 @@ function App() {
           {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
         </button>
 
-        {/* Search */}
+        {}
         {searchHistory.length > 0 && (
   <div className="mb-4">
     <h4 className="font-semibold mb-2">Recent Searches:</h4>
@@ -74,21 +70,19 @@ function App() {
     </div>
   </div>
 )}
-
         <SearchBar onSearch={handleSearch} />
-
-        {/* Loading / Error */}
+        {}
         {loading && <p className="text-center mt-4 text-blue-500">Loading...</p>}
         {error && <p className="text-center mt-4 text-red-500">{error}</p>}
 
-        {/* Current Weather */}
+        {}
         {weatherData && (
           <div className="mt-6">
             <WeatherCard data={weatherData} />
           </div>
         )}
 
-        {/* 5-Day Forecast */}
+        {}
         {forecast && (
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-4">5-Day Forecast</h2>
@@ -99,5 +93,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

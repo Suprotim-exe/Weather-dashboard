@@ -10,7 +10,6 @@ export default function SearchBar({ onSearch }) {
       setInput("");
     }
   };
-
   return (
     <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
       <input
